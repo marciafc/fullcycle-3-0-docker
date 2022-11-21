@@ -34,6 +34,14 @@
 	
 	- Publicar imagem no DockerHub
   
+  - [Networks](networks/README.MD)  
+  
+    - Tipos de redes
+	
+	- Bridge - Comunicaç?o entre containers
+	
+	- docker network => inspect, create, connect	    
+	
   
 ## Material extra
   
