@@ -46,6 +46,23 @@
 	
 	- Acessar o host Docker de dentro do conteiner Docker
 	
+  - [Colocando em prática](colocando-em-pratica/README.MD)
+  
+    - Exemplo prático de criação de imagem e container até o push no DockerHub
+
+      - docker build
+  
+      - docker run
+  
+      - docker logs	  
+  
+      - Alterar porta via CMD
+	
+	- Exemplo de app Nodejs sem possuir o Node instalado na máquina
+	
+	  - Nodejs e Express instalados apenas no container
+	  
+	  - Gerar imagem da aplicação e subir para o DockerHub
 
   
 ## Material extra
