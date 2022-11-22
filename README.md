@@ -1,6 +1,6 @@
-# Docker
+Ôªø# Docker
 
-  - [RepositÛrio projetos](https://github.com/marciafc/fc-devops-docker)
+  - [Reposit√≥rio projetos](https://github.com/marciafc/fc-devops-docker)
   
   - [Iniciando com Docker](iniciando-com-docker/README.MD)
   
@@ -26,11 +26,11 @@
 	
 	- ENTRYPOINT vs CMD
 	
-	  - ENTRYPOINT È um comando fixo
+	  - ENTRYPOINT √© um comando fixo
 	  
-	  - CMD comando vari·vel - usado como par‚metro do ENTRYPOINT
+	  - CMD comando vari√°vel - usado como par√¢metro do ENTRYPOINT
 	
-	- Entendendo melhor o ENTRYPOINT + EXEC (exec "$@"), vari·vel de ambiente (ENV)
+	- Entendendo melhor o ENTRYPOINT + EXEC (exec "$@"), vari√°vel de ambiente (ENV)
 	
 	- Publicar imagem no DockerHub
   
@@ -40,7 +40,7 @@
 	
     - Tipos de redes
 	
-	- Bridge - ComunicaÁ?o entre containers
+	- Bridge - Comunica√ß√£o entre containers
 	
 	- Host - Junta a rede do Docker host com a rede do container
 	
