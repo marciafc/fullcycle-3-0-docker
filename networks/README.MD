@@ -234,3 +234,55 @@ $ docker network inspect minharede
 
 ```
 
+## Aula 3 - Trabalhando com host
+
+  - Junta a rede do Docker host com a rede do container
+  
+    - ``` --network host ```
+  
+  - No MAC não funciona porque a máquina não é a máq virtual que está rodando o Docker 
+
+```
+
+// Ao acessar 'localhost' já funciona na porta 80
+$ docker run --rm -d --name nginx --network host nginx
+
+http://localhost/
+
+http://localhost:80
+
+Welcome to nginx!
+...
+
+```
+
+## Aula 4 - Container acessando nossa máquina
+
+  - "As of Docker version 18.03, you can use the host.docker.internal hostname to connect to your Docker host from inside a Docker container."
+    - [https://medium.com/@TimvanBaarsen/how-to-connect-to-the-docker-host-from-inside-a-docker-container-112b4c71bc66](https://medium.com/@TimvanBaarsen/how-to-connect-to-the-docker-host-from-inside-a-docker-container-112b4c71bc66)
+
+```
+// Criando container com imagem do Ubuntu 20.04 LTS (Focal Fossa)
+//   Precisei definir --add-host=host.docker.internal:host-gateway
+//     https://stackoverflow.com/questions/31324981/how-to-access-host-port-from-docker-container/61424570#61424570
+//   The magical IP number worked: `--add-host=host.docker.internal:172.17.0.1 `
+//     https://stackoverflow.com/questions/48546124/what-is-linux-equivalent-of-host-docker-internal
+$ docker run --rm -it --add-host=host.docker.internal:172.17.0.1 --name ubuntu-focal ubuntu:focal bash
+
+// Instalando curl no container
+# apt-get update \
+     && apt-get -y install curl
+
+// Subindo um servidor http com o python na porta 8000 no Docker host (minha máquina)
+// Rodei o comando na pasta /fullcycle-3-0-docker/trabalhando-com-imagens/aula3/html, onde tem um index.html
+$ python3 -m http.server 8000
+
+// Navegador
+http://localhost:8000/
+Full Cycle
+
+// Executar curl do container 'ubuntu-focal'
+# curl http://host.docker.internal:8000
+<h1>Full Cycle</h1>
+
+```

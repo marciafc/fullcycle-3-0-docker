@@ -36,12 +36,17 @@
   
   - [Networks](networks/README.MD)  
   
+    - docker network => inspect, create, connect	    
+	
     - Tipos de redes
 	
 	- Bridge - Comunicaç?o entre containers
 	
-	- docker network => inspect, create, connect	    
+	- Host - Junta a rede do Docker host com a rede do container
 	
+	- Acessar o host Docker de dentro do conteiner Docker
+	
+
   
 ## Material extra
   
