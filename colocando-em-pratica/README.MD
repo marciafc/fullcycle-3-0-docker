@@ -194,6 +194,6 @@ CMD ["node","index.js"]
 ```
   - Como build o Dockerfile.prod?
   
-    - Exemplo qdo tem diretório: ``` docker build -t marciafcinfo/hello-express node/. -f node/Dockerfile.prod ``` 
+    - Exemplo qdo tem diretório: ``` docker build -t marciafcinfo/hello-express node -f node/Dockerfile.prod ``` 
   
     - ``` docker build -t marciafcinfo/hello-express . -f Dockerfile.prod ``` 

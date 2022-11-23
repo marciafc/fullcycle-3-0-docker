@@ -65,6 +65,16 @@
 	  - Gerar imagem da aplicação e subir para o DockerHub
 	  
       - Criar e executar Dockerfile por ambiente (dev ou prod)	  
+	  
+  - [Otimizando imagens](otimizando-imagens/README.MD)
+  
+    - Otimização utilizando Multistage Building (prod X normal)
+  
+      - docker build -t marciafcinfo/laravel:prod   laravel -f laravel/Dockerfile.prod
+
+      - docker build -t marciafcinfo/laravel:normal laravel -f laravel/Dockerfile
+	
+	  - docker images | grep laravel
 
   
 ## Material extra
