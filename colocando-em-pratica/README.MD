@@ -163,3 +163,37 @@ localhost:3000/
 $ docker push marciafcinfo/hello-express
 ```
 
+  - Podemos ter um Dockerfile por ambiente ('dev' ou 'prod')
+  
+=== Dockerfile ===
+
+```
+FROM node:15
+
+WORKDIR /usr/src/app
+
+EXPOSE 3000
+
+CMD ["node","index.js"]
+
+```
+
+=== Dockerfile.prod ===
+
+```
+FROM node:15
+
+WORKDIR /usr/src/app
+
+COPY . .
+
+EXPOSE 3000
+
+CMD ["node","index.js"]
+
+```
+  - Como build o Dockerfile.prod?
+  
+    - Exemplo qdo tem diretório: ``` docker build -t marciafcinfo/hello-express node/. -f node/Dockerfile.prod ``` 
+  
+    - ``` docker build -t marciafcinfo/hello-express . -f Dockerfile.prod ``` 

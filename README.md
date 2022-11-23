@@ -58,11 +58,13 @@
   
       - Alterar porta via CMD
 	
-	- Exemplo de app Nodejs sem possuir o Node instalado na máquina
+	- Exemplo de app Nodejs sem possuir o Node instalado no Docker host
 	
-	  - Nodejs e Express instalados apenas no container
+	  - Nodejs e Express instalados apenas no container, sem instalar na máquina
 	  
 	  - Gerar imagem da aplicação e subir para o DockerHub
+	  
+      - Criar e executar Dockerfile por ambiente (dev ou prod)	  
 
   
 ## Material extra
