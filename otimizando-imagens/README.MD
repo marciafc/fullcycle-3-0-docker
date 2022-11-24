@@ -84,7 +84,7 @@ server {
 
   - Projeto
   
-    - 1. Config nginx -> [nginx.conf](https://github.com/marciafc/fc-devops-docker/blob/main/nginx/nginx.conf)
+  - 1. Config nginx -> [nginx.conf](https://github.com/marciafc/fc-devops-docker/blob/main/nginx/nginx.conf)
 	
 ```
 server {
