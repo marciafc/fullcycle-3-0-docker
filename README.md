@@ -75,6 +75,10 @@
       - docker build -t marciafcinfo/laravel:normal laravel -f laravel/Dockerfile
 	
 	  - docker images | grep laravel
+	  
+    - Nginx como proxy reverso
+	
+	  - Nginx -> laravel
 
   
 ## Material extra
