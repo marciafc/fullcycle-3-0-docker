@@ -79,6 +79,12 @@
     - Nginx como proxy reverso
 	
 	  - Nginx -> laravel
+	  
+  - [Docker-compose](docker-compose/README.MD)	  
+  
+    - docker-compose.yaml com imagem fixa
+	
+	- docker-compose.yaml com imagem a ser "buildada"
 
   
 ## Material extra
