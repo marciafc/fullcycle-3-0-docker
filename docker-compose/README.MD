@@ -99,3 +99,67 @@ $ docker-compose down
 
 ## Aula 3 - Criando banco de dados MySQL
 
+  - Projeto [https://github.com/marciafc/fc-devops-docker/](https://github.com/marciafc/fc-devops-docker/)
+  
+    - docker-compose.yaml
+  
+
+```
+version: '3'
+
+services: 
+
+  app:
+    build: 
+      context: node
+    container_name: app
+    entrypoint: dockerize -wait tcp://db:3306 -timeout 20s docker-entrypoint.sh
+    networks: 
+      - node-network
+    volumes: 
+      - ./node:/usr/src/app
+    tty: true
+    ports: 
+      - "3000:3000"
+    depends_on: 
+       - db
+
+  db:
+    image: mysql:5.7
+    command: --innodb-use-native-aio=0
+    container_name: db
+    restart: always
+    tty: true
+    volumes: 
+// pasta 'mysql' do host mapeada para 'var/lib/mysql' do container	  
+      - ./mysql:/var/lib/mysql
+	  
+    environment: 
+	
+// MySQL 5.7 MYSQL_USER=root não é mais aceita (já é default)
+      - MYSQL_DATABASE=nodedb
+      - MYSQL_ROOT_PASSWORD=root
+    networks: 
+      - node-network
+
+networks: 
+  node-network:
+    driver: bridge      
+
+```
+
+Rodar o DC na pasta raiz (onde está o arquivo docker-compose.yaml)
+
+```
+// Criar os containers
+$ docker-compose up -d	
+
+$ docker ps
+
+// Logs do mysql (container db)
+$ docker logs db
+
+
+
+```
+
