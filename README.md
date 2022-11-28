@@ -87,6 +87,8 @@
 	- docker-compose.yaml com imagem a ser "buildada"
 	
 	- docker-compose.yaml com MySQL e Node.js
+	
+	- Dependência entre containers com dockerize
 
   
 ## Material extra

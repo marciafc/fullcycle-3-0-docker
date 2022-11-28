@@ -230,6 +230,7 @@ $ docker exec -it app bash
 
 ## Aula 6 - Node vs MySQL
 
+  - Projeto [https://github.com/marciafc/fc-devops-docker/](https://github.com/marciafc/fc-devops-docker/)
 
 ```  
 $ docker-compose up -d --build
@@ -319,3 +320,93 @@ mysql> select * from people;
 +----+--------+
 
 ```
+
+## Aula 7 - Dependência entre containers
+
+  - Projeto [https://github.com/marciafc/fc-devops-docker/](https://github.com/marciafc/fc-devops-docker/)
+  
+  - depends_on + dockerize no docker-compose.yaml
+  
+  - docker-entrypoint.sh é o padrão dessa imagem 
+  
+  - Exemplos: [dockerize](https://github.com/jwilder/dockerize), [wait-for-it](https://github.com/vishnubob/wait-for-it)
+  
+```
+version: '3'
+
+services: 
+
+  app:
+    build: 
+      context: node
+    container_name: app
+    entrypoint: dockerize -wait tcp://db:3306 -timeout 20s docker-entrypoint.sh
+    networks: 
+      - node-network
+    volumes: 
+      - ./node:/usr/src/app
+    tty: true
+    ports: 
+      - "3000:3000"
+    depends_on: 
+       - db
+
+```
+
+Verificar se o db está pronto com dockerize: $ dockerize -wait tcp://db:3306
+
+  - Vai ficar tentando até o db estar pronto
+```
+/usr/src/app# dockerize -wait tcp://db:3306
+
+2022/11/28 02:06:34 Waiting for: tcp://db:3306
+2022/11/28 02:06:34 Connected to tcp://db:3306
+
+
+// Se parar o db
+$ docker-compose stop db
+
+$ docker-compose ps
+
+Name              Command               State            Ports         
+-----------------------------------------------------------------------
+app    dockerize -wait tcp://db:3 ...   Up       0.0.0.0:3000->3000/tcp
+db     docker-entrypoint.sh --inn ...   Exit 0                         
+
+
+// dockerize 
+/usr/src/app# dockerize -wait tcp://db:3306
+
+2022/11/28 02:12:04 Waiting for: tcp://db:3306
+2022/11/28 02:12:08 Problem with dial: dial tcp: lookup db on 127.0.0.11:53: no such host. Sleeping 1s
+2022/11/28 02:12:13 Problem with dial: dial tcp: lookup db on 127.0.0.11:53: no such host. Sleeping 1s
+2022/11/28 02:12:14 Timeout after 10s waiting on dependencies to become available: [tcp://db:3306]
+
+// dockerize informando 50 segundos
+/usr/src/app# dockerize -wait tcp://db:3306 -timeout 50s
+
+```
+
+Verificando log da app Node.js com o uso do dockerize
+
+```
+$ docker-compose up -d --build
+
+
+$ docker logs app
+
+// Esperou se conectar ao MySQL
+2022/11/27 22:57:34 Waiting for: tcp://db:3306
+
+// Se conecto qdo o MySQL estava pronto e então rodou o Node.js
+2022/11/27 22:57:34 Problem with dial: dial tcp 172.21.0.2:3306: connect: connection refused. Sleeping 1s
+2022/11/27 22:57:35 Connected to tcp://db:3306
+Welcome to Node.js v15.14.0.
+
+```
+
+## Aula 8 - Errata - Dependência entre containers (wait-for-it)
+
+  - [https://github.com/codeedu/docker-wait-for-it ](https://github.com/codeedu/docker-wait-for-it)
+  
+    - workaround do dockerize para MacBook M1
