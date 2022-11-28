@@ -94,7 +94,7 @@
 
   - [Desafios](desafios/README.MD)
   
-    - Desafio Go
+    - [Desafio Go](https://github.com/marciafc/desafio-docker-fullcycle#desafio-go)
 	
 	- Nginx com Node.js
   
@@ -105,3 +105,10 @@
     - [Livro](https://livro.descomplicandodocker.com.br/chapters/chapter_00.html)
 
   - [Docker para desenvolvedores - Gomex](https://github.com/gomex/docker-para-desenvolvedores)
+  
+  - [Remove All Containers and Images in Docker](https://www.geeksforgeeks.org/remove-all-containers-and-images-in-docker/#:~:text=Remove%20all%20Containers%3A%20To%20remove,containers%20in%20the%20docker%2Dmachine.)
+  
+    - Remove todos containers ``` $ docker rm $(docker ps -aq)```
+	
+	- Remove todas imagens ``` $ docker rmi $(docker images -q) ```
+	
