@@ -86,7 +86,7 @@
 	
 	- docker-compose.yaml com imagem a ser "buildada"
 	
-	- docker-compose.yaml com MySQL
+	- docker-compose.yaml com MySQL e Node.js
 
   
 ## Material extra
