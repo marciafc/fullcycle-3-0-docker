@@ -90,6 +90,11 @@
 	
 	- Dependência entre containers com dockerize
 
+  - [Desafios](desafios/README.MD)
+  
+    - Desafio Go
+	
+	- Nginx com Node.js
   
 ## Material extra
   
